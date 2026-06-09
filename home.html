@@ -1,0 +1,359 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Super Mariokart Tournament</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dark.css">
+    <script src="theme.js"></script>
+    <script src="js/common.js" defer></script>
+    <style>
+        .home-hero {
+            width: 88%;
+            max-width: 1280px;
+            margin: 36px auto 0;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .hero-copy {
+            background: rgba(255, 255, 255, 0.94);
+            border-radius: 26px;
+            padding: 34px 34px 30px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.26);
+            border-top: 6px solid #e00;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-copy::after {
+            content: "🏁";
+            position: absolute;
+            right: 18px;
+            top: 12px;
+            font-size: 118px;
+            opacity: 0.06;
+            pointer-events: none;
+        }
+
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff3d4;
+            color: #8a0000;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .hero-copy h1 {
+            font-size: clamp(34px, 5vw, 58px);
+            line-height: 0.98;
+            color: #1f1f1f;
+            margin-bottom: 14px;
+        }
+
+        .hero-copy .lead {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #4b4b4b;
+            margin-bottom: 18px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 18px 0 22px;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 12px;
+            border-radius: 999px;
+            background: #fff0f0;
+            color: #c00;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .stat-box {
+            border-radius: 16px;
+            padding: 14px 16px;
+            background: linear-gradient(135deg, #cc0000, #ff5500);
+            color: white;
+            box-shadow: 0 10px 20px rgba(200, 0, 0, 0.18);
+        }
+
+        .stat-box strong {
+            display: block;
+            font-size: 24px;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-box span {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.82);
+            font-weight: 700;
+        }
+
+        .hero-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 26px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+            min-height: 100%;
+        }
+
+        .hero-card img {
+            width: 100%;
+            display: block;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.58));
+            display: flex;
+            align-items: flex-end;
+            padding: 24px;
+        }
+
+        .hero-card-overlay .overlay-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-card-overlay h2 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .hero-card-overlay p {
+            color: rgba(255,255,255,0.86);
+            max-width: 380px;
+            line-height: 1.55;
+        }
+
+        .feature-wrap {
+            width: 88%;
+            max-width: 1280px;
+            margin: 26px auto 0;
+        }
+
+        .section-title {
+            margin-bottom: 14px;
+            font-size: 22px;
+            color: #222;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 22px;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.16);
+            border-top: 5px solid #e00;
+        }
+
+        .feature-card .icon {
+            font-size: 30px;
+            display: inline-flex;
+            margin-bottom: 10px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #1f1f1f;
+        }
+
+        .feature-card p {
+            line-height: 1.7;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .nav-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 1280px;
+            width: 100%;
+        }
+
+        @media (max-width: 1000px) {
+            .home-hero,
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .hero-stats,
+            .nav-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-copy {
+                padding: 28px 24px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a class="logo" href="home.html">🏁 Mariokart Tournament</a>
+            <ul class="nav-links">
+                <li><a href="home.html" class="active">Home</a></li>
+                <li><a href="tournament.html">Register</a></li>
+                <li><a href="sc.html">Schedule</a></li>
+                <li><a href="player.html">Players</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+
+    <section class="home-hero">
+        <div class="hero-copy">
+            <div class="hero-kicker">Season 2025 • Live bracket • Retro chaos</div>
+            <h1>Race. Drift. Dominate.</h1>
+            <p class="lead">
+                Welcome to the Mariokart Tournament — a high-energy showdown for racers who love
+                tight turns, bold moves, and a little friendly chaos on the track.
+            </p>
+
+            <div class="hero-badges">
+                <span class="badge-pill">🏁 10-player showdown</span>
+                <span class="badge-pill">⚡ Fast registration</span>
+                <span class="badge-pill">🏆 Live leaderboard</span>
+            </div>
+
+            <div class="hero-actions">
+                <a href="tournament.html" class="btn btn-red">🏎️ Register Now</a>
+                <a href="sc.html" class="btn btn-yellow">📅 View Schedule</a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <strong>10</strong>
+                    <span>Slots Open</span>
+                </div>
+                <div class="stat-box">
+                    <strong>5</strong>
+                    <span>Core Pages</span>
+                </div>
+                <div class="stat-box">
+                    <strong>1</strong>
+                    <span>Champion</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <img src="bg.png" alt="Super Mariokart Tournament">
+            <div class="hero-card-overlay">
+                <div>
+                    <div class="overlay-badge">🔥 Race day energy</div>
+                    <h2>Ready to claim the crown?</h2>
+                    <p>Jump into the tournament, check the schedule, meet the players, and track every win.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-wrap">
+        <h2 class="section-title">Why this tournament feels bigger</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <span class="icon">🎮</span>
+                <h3>Built for racers</h3>
+                <p>Clean registration, clear schedule, and a leaderboard that keeps the competition easy to follow.</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🛠️</span>
+                <h3>Simple to manage</h3>
+                <p>Everything is laid out so players can register quickly and admins can keep the event organized.</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon">⚔️</span>
+                <h3>Game-night energy</h3>
+                <p>Bold colors, big calls to action, and a tournament vibe that feels more like a game launch than a form.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="width:88%;max-width:1280px;margin:34px auto 80px;display:flex;justify-content:center;">
+        <div class="nav-buttons">
+            <a href="tournament.html" class="nav-btn-card">
+                <span>📝</span>Register
+            </a>
+            <a href="sc.html" class="nav-btn-card">
+                <span>📅</span>Schedule
+            </a>
+            <a href="player.html" class="nav-btn-card">
+                <span>👾</span>Players
+            </a>
+            <a href="leaderboard.html" class="nav-btn-card">
+                <span>🏆</span>Leaderboard
+            </a>
+            <a href="contact.html" class="nav-btn-card">
+                <span>📬</span>Contact
+            </a>
+            <a href="chatbot.html" class="nav-btn-card">
+                <span>🤖</span>Chatbot
+            </a>
+        </div>
+    </section>
+</body>
+</html>

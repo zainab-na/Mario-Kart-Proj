@@ -1,0 +1,411 @@
+/* ============================================================
+   DARK MODE – dark.css
+   Applied when <html data-theme="dark">
+   Link this AFTER style.css on every page
+   ============================================================ */
+
+/* ---------- SMOOTH TRANSITION ---------- */
+*, *::before, *::after {
+    transition: background-color 0.3s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ---------- BLURRED BACKGROUND ---------- */
+[data-theme="dark"] body::before {
+    filter: blur(6px) brightness(0.4);
+}
+
+/* ---------- NAVBAR ---------- */
+[data-theme="dark"] .navbar {
+    background: linear-gradient(135deg, rgba(80,0,0,0.97), rgba(120,40,0,0.97));
+    border-bottom-color: rgba(255,200,0,0.4);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.7);
+}
+
+[data-theme="dark"] .nav-links a {
+    color: rgba(255,255,255,0.85);
+}
+
+[data-theme="dark"] .nav-links a:hover,
+[data-theme="dark"] .nav-links a.active {
+    background-color: #FFE000;
+    color: #8a0000;
+}
+
+/* ---------- PAGE BANNER ---------- */
+[data-theme="dark"] .page-banner {
+    background: linear-gradient(135deg, rgba(80,0,0,0.95), rgba(120,40,0,0.95));
+    border-bottom-color: rgba(255,200,0,0.3);
+}
+
+/* ---------- SHARED CARD ---------- */
+[data-theme="dark"] .card {
+    background: rgba(28,18,18,0.97);
+    border-top-color: #cc0000;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+[data-theme="dark"] .card h2 {
+    color: #ff6666;
+}
+
+[data-theme="dark"] .card .section-sub {
+    color: #666;
+}
+
+/* ---------- BODY TEXT ---------- */
+[data-theme="dark"] body {
+    color: #e0e0e0;
+}
+
+/* ---------- PAGE CONTENT BACKGROUND ---------- */
+[data-theme="dark"] .page-content {
+    /* keeps existing padding, just text color affected via body */
+}
+
+/* ---------- BUTTONS ---------- */
+[data-theme="dark"] .btn-yellow {
+    background: linear-gradient(135deg, #cc9900, #996600);
+    color: #fff8e0;
+}
+
+/* ---------- SCHEDULE TABLE ---------- */
+[data-theme="dark"] .schedule-table td {
+    border-bottom-color: #2a1a1a;
+    color: #ddd;
+}
+
+[data-theme="dark"] .schedule-table tr:nth-child(even) td {
+    background: #1e1010;
+}
+
+[data-theme="dark"] .schedule-table tr:hover td {
+    background: #2a1515;
+}
+
+[data-theme="dark"] .final-row td {
+    background: linear-gradient(90deg, #2a2000, #1e1800) !important;
+    color: #FFE000;
+}
+
+/* ---------- PLAYER CARDS ---------- */
+[data-theme="dark"] .flip-front {
+    background: #1e1212;
+    border-bottom-color: #cc0000;
+}
+
+[data-theme="dark"] .flip-front h3,
+[data-theme="dark"] .player-name-text {
+    color: #f0f0f0;
+}
+
+[data-theme="dark"] .player-type-tag,
+[data-theme="dark"] .stat-label {
+    color: #666;
+}
+
+[data-theme="dark"] .stat-bar {
+    background: #2a1a1a;
+}
+
+[data-theme="dark"] .rank-other {
+    background: #2a2a2a;
+    color: #aaa;
+}
+
+[data-theme="dark"] .flip-hint {
+    color: #444;
+}
+
+/* ---------- FILTER BAR ---------- */
+[data-theme="dark"] .filter-bar {
+    background: #1a0f0f;
+    border-color: #2a1a1a;
+}
+
+[data-theme="dark"] .search-box {
+    background: #120a0a;
+    border-color: #2a1a1a;
+}
+
+[data-theme="dark"] .search-box input {
+    color: #e0e0e0;
+    background: transparent;
+}
+
+[data-theme="dark"] .search-box input::placeholder {
+    color: #555;
+}
+
+[data-theme="dark"] .search-box:focus-within {
+    border-color: #cc0000;
+}
+
+[data-theme="dark"] .filter-group select {
+    background: #120a0a;
+    border-color: #2a1a1a;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .btn-reset {
+    border-color: #2a1a1a;
+    color: #555;
+}
+
+[data-theme="dark"] .btn-reset:hover {
+    border-color: #cc0000;
+    color: #ff6666;
+    background: #1e0a0a;
+}
+
+[data-theme="dark"] .no-results p {
+    color: #444;
+}
+
+/* ---------- LEADERBOARD ---------- */
+[data-theme="dark"] .form-card,
+[data-theme="dark"] .lb-card {
+    background: rgba(28,18,18,0.97);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+[data-theme="dark"] .form-card h2,
+[data-theme="dark"] .lb-card h2,
+[data-theme="dark"] .lb-header h2 {
+    color: #ff6666;
+}
+
+[data-theme="dark"] .input-group label {
+    color: #888;
+}
+
+[data-theme="dark"] .input-group input {
+    background: #120a0a;
+    border-color: #2a1a1a;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .input-group input:focus {
+    border-color: #cc0000;
+    background: #1a0a0a;
+}
+
+[data-theme="dark"] .lb-table td {
+    border-bottom-color: #2a1a1a;
+    color: #ddd;
+}
+
+[data-theme="dark"] .lb-table tr:nth-child(even) td {
+    background: #1a0e0e;
+}
+
+[data-theme="dark"] .lb-table tr:hover td {
+    background: #220f0f;
+}
+
+[data-theme="dark"] .row-top td {
+    background: linear-gradient(90deg, #2a2000, #1e1800) !important;
+}
+
+[data-theme="dark"] .btn-clear {
+    border-color: #2a1a1a;
+    color: #555;
+}
+
+[data-theme="dark"] .btn-clear:hover {
+    border-color: #cc0000;
+    color: #ff6666;
+}
+
+[data-theme="dark"] .podium-name {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .last-updated {
+    color: #444;
+}
+
+/* ---------- CONTACT FORM ---------- */
+[data-theme="dark"] .form-group label {
+    color: #888;
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] .form-group textarea {
+    background: #120a0a;
+    border-color: #2a1a1a;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group select:focus,
+[data-theme="dark"] .form-group textarea:focus {
+    border-color: #cc0000;
+    background: #1a0a0a;
+}
+
+/* ---------- CHATBOT ---------- */
+[data-theme="dark"] .chat-wrapper {
+    border-top-color: #cc0000;
+}
+
+[data-theme="dark"] .chat-messages {
+    background: #120a0a;
+}
+
+[data-theme="dark"] .msg.bot .msg-bubble {
+    background: #1e1212;
+    color: #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+[data-theme="dark"] .suggestions {
+    background: #1a0e0e;
+    border-top-color: #2a1a1a;
+}
+
+[data-theme="dark"] .suggestion-btn {
+    background: #1e1212;
+    border-color: #2a1a1a;
+    color: #ff6666;
+}
+
+[data-theme="dark"] .chat-input-area {
+    background: #1a0e0e;
+    border-top-color: #2a1a1a;
+}
+
+[data-theme="dark"] .chat-input {
+    background: #120a0a;
+    border-color: #2a1a1a;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .chat-input:focus {
+    border-color: #cc0000;
+    background: #1a0a0a;
+}
+
+/* ---------- HOME ABOUT CARD ---------- */
+[data-theme="dark"] .about-card p {
+    color: #bbb;
+}
+
+/* ---------- NAV BUTTON CARDS (home page) ---------- */
+[data-theme="dark"] .nav-btn-card {
+    background: rgba(28,18,18,0.95);
+    color: #e0e0e0;
+    border-top-color: #cc0000;
+}
+
+[data-theme="dark"] .nav-btn-card:hover {
+    background: #1e1212;
+    border-top-color: #ff6600;
+}
+
+
+/* ---------- HOME HERO / FEATURE CARDS ---------- */
+[data-theme="dark"] .hero-copy,
+[data-theme="dark"] .feature-card {
+    background: rgba(28,18,18,0.96);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.55);
+}
+
+[data-theme="dark"] .hero-copy h1,
+[data-theme="dark"] .section-title,
+[data-theme="dark"] .feature-card h3 {
+    color: #f2f2f2;
+}
+
+[data-theme="dark"] .hero-copy .lead,
+[data-theme="dark"] .feature-card p {
+    color: #cfcfcf;
+}
+
+[data-theme="dark"] .hero-kicker,
+[data-theme="dark"] .badge-pill {
+    background: #1e1212;
+    color: #ff8888;
+}
+
+[data-theme="dark"] .stat-box {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+}
+
+/* ---------- TOURNAMENT REGISTRATION CARDS ---------- */
+[data-theme="dark"] .participants-card {
+    background: rgba(22,14,14,0.97);
+    box-shadow: 0 14px 34px rgba(0,0,0,0.55);
+    border-top-color: #cc0000;
+}
+
+[data-theme="dark"] .participants-card h2 {
+    color: #ff6666;
+}
+
+[data-theme="dark"] .registration-card {
+    box-shadow: 0 18px 34px rgba(0,0,0,0.45);
+}
+
+[data-theme="dark"] .registration-meta div {
+    background: rgba(0,0,0,0.24);
+    border-color: rgba(255,255,255,0.06);
+}
+
+/* ---------- FOOTER ---------- */
+[data-theme="dark"] .footer {
+    background: rgba(0,0,0,0.9);
+    color: rgba(255,255,255,0.4);
+    border-top-color: rgba(255,200,0,0.2);
+}
+
+/* ---------- THEME TOGGLE BUTTON ---------- */
+.theme-toggle {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    color: white;
+    line-height: 1;
+}
+
+.theme-toggle:hover {
+    background: rgba(255,255,255,0.25);
+    transform: scale(1.05);
+}
+
+[data-theme="dark"] .auth-action-btn {
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.95);
+}
+
+[data-theme="dark"] .auth-action-btn:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+
+[data-theme="dark"] .auth-floating-btn {
+    box-shadow: 0 10px 22px rgba(0,0,0,0.38);
+}
+
+[data-theme="dark"] .admin-btn-secondary {
+    background: linear-gradient(135deg, #221414, #1a0f0f);
+    color: #ffb3b3;
+    border-color: #3c2222;
+}
+
+[data-theme="dark"] .admin-btn-secondary:hover {
+    background: linear-gradient(135deg, #2a1717, #241010);
+}
+
+[data-theme="dark"] .admin-btn-danger {
+    background: linear-gradient(135deg, #cc0000, #ff6600);
+    border-color: rgba(255, 120, 120, 0.35);
+}
+
+[data-theme="dark"] .admin-btn-danger:hover {
+    background: linear-gradient(135deg, #b30000, #e05500);
+}

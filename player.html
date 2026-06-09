@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mariokart Tournament – Players</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="player.css">
+    <link rel="stylesheet" href="dark.css">
+<script src="theme.js"></script>
+    <script src="js/common.js" defer></script>
+</head>
+<body>
+
+        <nav class="navbar">
+        <div class="nav-container">
+            <a class="logo" href="home.html">🏁 Mariokart Tournament</a>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="tournament.html">Register</a></li>
+                <li><a href="sc.html">Schedule</a></li>
+                <li><a href="player.html" class="active">Players</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+
+    <div class="page-banner">
+        <h1>🏎️ Tournament Players</h1>
+        <p>Meet the racers battling for the championship.</p>
+    </div>
+
+    <div class="page-content">
+        <div class="card">
+            <h2>Competitor Roster</h2>
+            <p class="section-sub">Season 2025 &bull; <span id="playerCount">20</span> Racers</p>
+
+            <!-- SEARCH & FILTER BAR -->
+            <div class="filter-bar">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" placeholder="Search player by name...">
+                </div>
+                <div class="filter-group">
+                    <select id="gameFilter">
+                        <option value="">🎮 All Types</option>
+                        <option value="Lightweight">🪶 Lightweight</option>
+                        <option value="All-Rounder">⚖️ All-Rounder</option>
+                        <option value="Heavyweight">🏋️ Heavyweight</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="rankFilter">
+                        <option value="">🏆 All Ranks</option>
+                        <option value="1">🥇 Rank #1</option>
+                        <option value="2">🥈 Rank #2</option>
+                        <option value="3">🥉 Rank #3</option>
+                        <option value="top3">🎖️ Top 3</option>
+                        <option value="top5">⭐ Top 5</option>
+                    </select>
+                </div>
+                <button class="btn-reset" onclick="resetFilters()">✕ Reset</button>
+            </div>
+
+            <!-- RESULTS INFO -->
+            <div class="results-info" id="resultsInfo"></div>
+
+            <!-- PLAYERS GRID -->
+            <div class="players-grid" id="playersContainer"></div>
+
+            <!-- NO RESULTS -->
+            <div class="no-results" id="noResults" style="display:none;">
+                <span>🏎️</span>
+                <p>No players found. Try a different search.</p>
+            </div>
+        </div>
+
+        <a href="home.html" class="btn btn-yellow">← Back to Home</a>
+    </div>
+
+    <footer class="footer">
+        🏁 Mariokart Tournament &copy; 2025 &nbsp;|&nbsp; May the best racer win!
+    </footer>
+
+    <script src="players.js"></script>
+</body>
+</html>

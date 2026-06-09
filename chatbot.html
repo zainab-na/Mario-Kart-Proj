@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot – Mariokart Tournament</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="dark.css">
+<script src="theme.js"></script>
+    <script src="js/common.js" defer></script>
+</head>
+<body>
+
+        <nav class="navbar">
+        <div class="nav-container">
+            <a class="logo" href="home.html">🏁 Mariokart Tournament</a>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="tournament.html">Register</a></li>
+                <li><a href="sc.html">Schedule</a></li>
+                <li><a href="player.html">Players</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="chatbot.html" class="active">Chatbot</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+
+    <div class="page-banner">
+        <h1>🤖 Tournament Assistant</h1>
+        <p>Ask anything about Mariokart or the tournament</p>
+    </div>
+
+    <div class="page-content">
+
+        <div class="chat-wrapper">
+
+            <div class="chat-header">
+                <div class="chat-header-icon">🏎️</div>
+                <div class="chat-header-text">
+                    <h3>Mariokart Assistant</h3>
+                    <p>Powered by Groq AI</p>
+                </div>
+                <div class="chat-status">
+                    <div class="status-dot"></div>
+                    Online
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chatMessages"></div>
+
+            <div class="suggestions">
+                <button class="suggestion-btn" onclick="askSuggestion(this)">🏆 How do I register?</button>
+                <button class="suggestion-btn" onclick="askSuggestion(this)">📅 When is the tournament?</button>
+                <button class="suggestion-btn" onclick="askSuggestion(this)">🎮 What is Mariokart?</button>
+                <button class="suggestion-btn" onclick="askSuggestion(this)">🗺️ Best tracks?</button>
+                <button class="suggestion-btn" onclick="askSuggestion(this)">🏎️ Best characters?</button>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Ask about Mariokart or the tournament..." maxlength="300">
+                <button class="chat-send-btn" id="sendBtn" onclick="sendMessage()">➤</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="footer">&copy; 2026 Mariokart Tournament 🏁</footer>
+
+    <script>
+        // ── CONFIG ──────────────────────────────────
+      //handled by backend
+      const API_URL = '/api/chat';
+
+        const SYSTEM_PROMPT = `You are a formal and knowledgeable assistant for a Super Mariokart Tournament.
+Answer questions about the Mariokart game series (characters, tracks, items, mechanics, history),
+and this tournament (registration via Contact page, schedule, leaderboard, players).
+Keep responses concise and formal. If asked something unrelated to Mariokart or the tournament, politely redirect the user.
+Tournament details: Registration on the Contact page. Schedule on the Schedule page. Live leaderboard on the Leaderboard page. Tournament date: April 20, 2026. Location: Rawalpindi, Pakistan.`;
+
+        // Conversation history array (includes system message)
+        const history = [
+            { role: 'system', content: SYSTEM_PROMPT }
+        ];
+
+        // ── INIT ────────────────────────────────────
+        window.onload = () => {
+            addMessage('bot', '👋 Welcome to the Mariokart Tournament Assistant. I can answer questions about the tournament, registration, schedules, and all things Mariokart. How may I assist you?');
+            document.getElementById('chatInput').addEventListener('keydown', e => {
+                if (e.key === 'Enter') sendMessage();
+            });
+        };
+
+        // ── SEND MESSAGE ────────────────────────────
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const text  = input.value.trim();
+            if (!text) return;
+
+            input.value = '';
+            addMessage('user', text);
+            setLoading(true);
+
+            // Push user message into history array
+            history.push({ role: 'user', content: text });
+
+            try {
+                const response = await fetch('/api/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ messages: history })
+});
+
+                if (!response.ok) {
+                    const err = await response.json();
+                    console.error('API Error:', err);
+                    addMessage('bot', `⚠️ Error ${response.status}: ${err?.error?.message || 'Please try again.'}`);
+                    setLoading(false);
+                    return;
+                }
+
+                const data  = await response.json();
+                const reply = data.choices?.[0]?.message?.content || 'I am unable to respond at the moment.';
+
+                // Push model reply into history array
+                history.push({ role: 'assistant', content: reply });
+                addMessage('bot', reply);
+
+            } catch (err) {
+                console.error('Fetch error:', err);
+                addMessage('bot', '⚠️ Connection error. Please check your internet and try again.');
+            }
+
+            setLoading(false);
+        }
+
+        // ── SUGGESTION BUTTONS ──────────────────────
+        function askSuggestion(btn) {
+            document.getElementById('chatInput').value = btn.textContent.trim().slice(2);
+            sendMessage();
+        }
+
+        // ── ADD MESSAGE TO DOM ──────────────────────
+        function addMessage(role, text) {
+            const container = document.getElementById('chatMessages');
+            const typing = document.getElementById('typingIndicator');
+            if (typing) typing.remove();
+
+            const msg = document.createElement('div');
+            msg.className = `msg ${role}`;
+            msg.innerHTML = `
+                <div class="msg-avatar">${role === 'bot' ? '🏎️' : '👤'}</div>
+                <div class="msg-bubble">${formatText(text)}</div>`;
+
+            container.appendChild(msg);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // ── TYPING INDICATOR ────────────────────────
+        function setLoading(on) {
+            const container = document.getElementById('chatMessages');
+            const sendBtn   = document.getElementById('sendBtn');
+            sendBtn.disabled = on;
+
+            if (on) {
+                const typing = document.createElement('div');
+                typing.className = 'msg bot';
+                typing.id = 'typingIndicator';
+                typing.innerHTML = `
+                    <div class="msg-avatar">🏎️</div>
+                    <div class="typing-indicator">
+                        <span></span><span></span><span></span>
+                    </div>`;
+                container.appendChild(typing);
+                container.scrollTop = container.scrollHeight;
+            }
+        }
+
+        // ── FORMAT TEXT ─────────────────────────────
+        function formatText(text) {
+            return text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/\n/g, '<br>');
+        }
+    </script>
+</body>
+</html>

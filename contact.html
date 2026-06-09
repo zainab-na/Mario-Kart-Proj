@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mariokart Tournament – Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dark.css">
+<script src="theme.js"></script>
+    <script src="js/common.js" defer></script>
+
+    <!-- Leaflet CSS (OpenStreetMap) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <style>
+        #map {
+            width: 100%;
+            height: 380px;
+            border-radius: 14px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            margin-top: 10px;
+            z-index: 0;
+        }
+
+        .map-card h2 { font-size: 26px; color: #cc0000; margin-bottom: 4px; }
+
+        .map-info {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .map-info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .map-info-item span { font-size: 20px; }
+    </style>
+</head>
+<body>
+        <nav class="navbar">
+        <div class="nav-container">
+            <a class="logo" href="home.html">🏁 Mariokart Tournament</a>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="tournament.html">Register</a></li>
+                <li><a href="sc.html">Schedule</a></li>
+                <li><a href="player.html">Players</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+
+    <div class="page-banner">
+        <h1>📬 Contact & Register</h1>
+        <p>Sign up to race or send us a message.</p>
+    </div>
+
+    <div class="page-content">
+
+        <!-- CONTACT FORM -->
+        <div class="card">
+            <h2>Get In Touch</h2>
+            <p class="section-sub">All fields marked * are required</p>
+            <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fname">First Name *</label>
+                        <input type="text" id="fname" placeholder="e.g. Mario" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name *</label>
+                        <input type="text" id="lname" placeholder="e.g. Bros" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="character">Favourite Character *</label>
+                        <select id="character" required>
+                            <option value="">-- Select --</option>
+                            <option>Mario</option>
+                            <option>Luigi</option>
+                            <option>Peach</option>
+                            <option>Yoshi</option>
+                            <option>Toad</option>
+                            <option>Bowser</option>
+                            <option>Donkey Kong</option>
+                            <option>Wario</option>
+                            <option>Koopa</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message / Notes</label>
+                    <textarea id="message" placeholder="Any questions or special requests..."></textarea>
+                </div>
+                <div class="form-submit">
+                    <button type="submit" class="btn btn-red">🏎️ Submit Registration</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- MAP CARD -->
+        <div class="card map-card">
+            <h2>📍 Tournament Venue</h2>
+            <p class="section-sub">Find us here</p>
+
+            <!-- OpenStreetMap via Leaflet -->
+            <div id="map"></div>
+
+            <div class="map-info">
+                <div class="map-info-item"><span>📍</span> F-15, Islamabad, Pakistan</div>
+                <div class="map-info-item"><span>📅</span> April 20, 2026</div>
+                <div class="map-info-item"><span>🕒</span> 10:00 AM – 6:00 PM</div>
+            </div>
+        </div>
+
+        <a href="home.html" class="btn btn-yellow">← Back to Home</a>
+    </div>
+
+    <footer class="footer">
+        🏁 Mariokart Tournament &copy; 2026 &nbsp;|&nbsp; May the best racer win!
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // ── OpenStreetMap via Leaflet ──
+        // Coordinates: Islamabad, Pakistan
+        const LAT = 33.640107;
+        const LNG = 72.920734;
+
+        const map = L.map('map').setView([LAT, LNG], 14);
+
+        // Load OpenStreetMap tiles (free, no API key needed)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Custom red marker for tournament venue
+        const venueIcon = L.divIcon({
+            html: '<div style="font-size:32px;line-height:1;">🏁</div>',
+            className: '',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
+        });
+
+        // Add marker with popup
+        L.marker([LAT, LNG], { icon: venueIcon })
+            .addTo(map)
+            .bindPopup(`
+                <strong style="color:#cc0000;font-size:14px;">🏆 Mariokart Tournament</strong><br>
+                F-15, Islamabad<br>
+                <em>April 20, 2026 · 10AM–6PM</em>
+            `)
+            .openPopup();
+
+        // Form submit handler
+        async function handleSubmit(e) {
+            e.preventDefault();
+
+            const payload = {
+                firstName: document.getElementById('fname').value.trim(),
+                lastName: document.getElementById('lname').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                character: document.getElementById('character').value,
+                message: document.getElementById('message').value.trim()
+            };
+
+            try {
+                await apiFetch('/api/contact', {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                });
+
+                alert('✅ Registration sent. We will contact you soon.');
+                document.getElementById('contactForm').reset();
+            } catch (err) {
+                alert('❌ ' + err.message);
+            }
+        }
+    </script>
+</body>
+</html>

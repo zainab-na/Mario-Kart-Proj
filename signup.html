@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up – Mariokart Tournament</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="dark.css">
+    <script src="theme.js"></script>
+    <script src="js/common.js" defer></script>
+    <script src="js/signup.js" defer></script>
+</head>
+<body>
+        <nav class="navbar">
+        <div class="nav-container">
+            <a class="logo" href="home.html">🏁 Mariokart Tournament</a>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="tournament.html">Register</a></li>
+                <li><a href="sc.html">Schedule</a></li>
+                <li><a href="player.html">Players</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <h2>Create Account</h2>
+            <p class="section-sub">🏎️ Join the Tournament</p>
+            <div class="global-success" id="globalSuccess" style="display:none;"></div>
+            <form id="signupForm" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fname">First Name</label>
+                        <input type="text" id="fname" placeholder="Mario">
+                        <span class="error-msg" id="fnameErr"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" placeholder="Bros">
+                        <span class="error-msg" id="lnameErr"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" placeholder="e.g. 20" min="1" max="120">
+                    <span class="error-msg" id="ageErr"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="text" id="email" placeholder="you@example.com">
+                    <span class="error-msg" id="emailErr"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="pw-wrapper">
+                        <input type="password" id="password" placeholder="Min 8 chars">
+                        <span class="eye-toggle" id="eyeToggle1" onclick="togglePw('password','eyeToggle1')">🙈</span>
+                    </div>
+                    <span class="strength-label" id="strengthLabel"></span>
+                    <span class="error-msg" id="passwordErr"></span>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="pw-wrapper">
+                        <input type="password" id="confirmPassword" placeholder="Repeat your password">
+                        <span class="eye-toggle" id="eyeToggle2" onclick="togglePw('confirmPassword','eyeToggle2')">🙈</span>
+                    </div>
+                    <span class="error-msg" id="confirmErr"></span>
+                </div>
+                <button type="submit" class="submit-btn">✨ Create Account</button>
+                <div class="signup-link">
+                    Already have an account? <a href="login.html">Log In</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer">
+        🏁 Mariokart Tournament &copy; 2025 &nbsp;|&nbsp; May the best racer win!
+    </footer>
+</body>
+</html>

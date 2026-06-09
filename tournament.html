@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mariokart Tournament – Register</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style4.css">
+    <link rel="stylesheet" href="dark.css">
+    <script src="theme.js"></script>
+    <script src="js/common.js" defer></script>
+    <script src="js/tournament.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a class="logo" href="home.html">🏁 Mariokart Tournament</a>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="tournament.html" class="active">Register</a></li>
+                <li><a href="sc.html">Schedule</a></li>
+                <li><a href="player.html">Players</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+
+    <div class="page-banner">
+        <h1>🏎️ Tournament Registration</h1>
+        <p>Sign up your racer — limited to 10 competitors!</p>
+    </div>
+
+    <div class="page-content">
+        <div class="full-banner" id="fullBanner" style="display:none;">
+            🚫 Tournament is FULL — 10/10 players registered. No more spots available!
+        </div>
+
+        <div class="form-card" id="formCard">
+            <h2>Register Your Racer</h2>
+            <p class="sub">Fill in your details to claim your spot</p>
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Player Name *</label>
+                    <input type="text" id="inputPlayer" placeholder="e.g. MushKing" maxlength="25">
+                </div>
+                <div class="input-group">
+                    <label>Team Name *</label>
+                    <input type="text" id="inputTeam" placeholder="e.g. Red Shells" maxlength="25">
+                </div>
+                <div class="input-group">
+                    <label>Game ID *</label>
+                    <input type="text" id="inputGameId" placeholder="e.g. MK-4821" maxlength="20">
+                </div>
+                <button id="registerBtn" class="btn-add" type="button">Pay $10 & Register 🏁</button>
+                <button class="btn-add" id="cancelEditBtn" style="display:none;background:#666;">Cancel</button>
+            </div>
+            <div class="feedback" id="feedback"></div>
+        </div>
+
+        <div class="counter-banner">
+            <div class="counter-left">
+                <div class="counter-display">
+                    <span class="num" id="countNum">0</span>
+                    <span class="denom">/10</span>
+                </div>
+                <div class="counter-text">
+                    <h3>Total Registered Players</h3>
+                    <p id="counterSub">10 spots remaining</p>
+                    <div class="slots-bar" id="slotsBar"></div>
+                </div>
+            </div>
+            <div class="counter-right">
+                <div class="slots-label" id="slotsLabel">0 / 10</div>
+            </div>
+        </div>
+
+        <div class="participants-card">
+            <h2>Registered Players</h2>
+            <div id="participantsContainer" class="registrations-grid"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        🏁 Mariokart Tournament &copy; 2025 &nbsp;|&nbsp; May the best racer win!
+    </footer>
+</body>
+</html>

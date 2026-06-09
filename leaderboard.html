@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard – Mariokart Tournament</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style3.css">
+    <link rel="stylesheet" href="dark.css">
+<script src="theme.js"></script>
+</head>
+<body>
+
+        <nav class="navbar">
+        <div class="nav-container">
+            <a class="logo" href="home.html">🏁 Mariokart Tournament</a>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="tournament.html">Register</a></li>
+                <li><a href="sc.html">Schedule</a></li>
+                <li><a href="player.html">Players</a></li>
+                <li><a href="leaderboard.html" class="active">Leaderboard</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+
+    <div class="page-banner">
+        <h1>🏆 Tournament Leaderboard</h1>
+        <p>Add players and scores — rankings update instantly</p>
+    </div>
+
+    <div class="page-content">
+
+        <!-- ADD PLAYER -->
+        <div class="form-card">
+            <h2>Add Player</h2>
+            <p class="sub">Enter name & score</p>
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Player Name</label>
+                    <input type="text" id="inputName" placeholder="e.g. MushroomKing" maxlength="30">
+                </div>
+                <div class="input-group">
+                    <label>Score</label>
+                    <input type="number" id="inputScore" placeholder="e.g. 420" min="0">
+                </div>
+                <button class="btn-add" onclick="addPlayer()">Add 🏎️</button>
+            </div>
+            <div class="feedback" id="feedback"></div>
+        </div>
+
+        <!-- LEADERBOARD -->
+        <div class="card">
+            <div class="lb-header">
+                <div>
+                    <h2>🏁 Standings</h2>
+                    <p class="sub">Highest score first</p>
+                </div>
+                <button class="btn-clear" onclick="clearAll()">🗑 Clear All</button>
+            </div>
+
+            <div class="podium" id="podium">
+                <p class="podium-empty">No players yet</p>
+            </div>
+
+            <table class="lb-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Player</th>
+                        <th>Score</th>
+                        <th>Edit</th><th class="col-delete">Remove</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <footer class="footer">&copy; 2026 Mariokart Tournament 🏁</footer>
+
+    <script src="js/common.js" defer></script>
+<script src="js/leaderboard.js" defer></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard – Mariokart Tournament</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style3.css">
+    <link rel="stylesheet" href="dark.css">
+<script src="theme.js"></script>
+</head>
+
