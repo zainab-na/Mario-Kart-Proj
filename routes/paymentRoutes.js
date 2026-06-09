@@ -51,11 +51,8 @@ await stripe.checkout.sessions.create({
                     }
                 ],
 
-                success_url:
-                "http://localhost:3000/success.html?success=true",
-
-                cancel_url:
-                "http://localhost:3000/cancel.html"
+                success_url: 'https://mario-kart-proj-production.up.railway.app/tournament.html',
+cancel_url: 'https://mario-kart-proj-production.up.railway.app/tournament.html',
             });
 
             res.json({
