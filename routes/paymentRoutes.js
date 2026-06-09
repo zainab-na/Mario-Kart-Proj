@@ -51,7 +51,7 @@ await stripe.checkout.sessions.create({
                     }
                 ],
 
-                success_url: 'https://mario-kart-proj-production.up.railway.app/tournament.html',
+                success_url: 'https://mario-kart-proj-production.up.railway.app/success.html',
 cancel_url: 'https://mario-kart-proj-production.up.railway.app/tournament.html',
             });
 
