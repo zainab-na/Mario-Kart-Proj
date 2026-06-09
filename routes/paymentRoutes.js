@@ -7,14 +7,6 @@ const router = express.Router();
 const stripe = Stripe(
     process.env.STRIPE_SECRET_KEY
 );
-const express = require("express");
-const Stripe = require("stripe");
-
-const router = express.Router();
-
-const stripe = Stripe(
-    process.env.STRIPE_SECRET_KEY
-);
 
 router.post(
     "/create-checkout-session",
